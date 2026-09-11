@@ -1,1 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudentHub | Student Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <div class="brand-icon">🎓</div>
+
+                <div>
+                    <h2>StudentHub</h2>
+                    <span>Management System</span>
+                </div>
+            </div>
+
+            <nav>
+                <a class="nav-item active">
+                    <span>▦</span>
+                    Dashboard
+                </a>
+
+                <a class="nav-item">
+                    <span>👥</span>
+                    Students
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="system-status">
+                    <span class="status-dot"></span>
+
+                    <div>
+                        <strong>System Online</strong>
+                        <small>Database connected</small>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main">
+
+            <!-- Header -->
+            <header class="header">
+
+                <div>
+                    <p class="eyebrow">OVERVIEW</p>
+                    <h1>Student Dashboard</h1>
+                    <p class="subtitle">
+                        Manage student records from one place.
+                    </p>
+                </div>
+
+                <button class="refresh-btn" onclick="loadStudents()">
+                    ↻ Refresh
+                </button>
+
+            </header>
+
+
+            <!-- Statistics -->
+            <section class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">👥</div>
+
+                    <div>
+                        <span>Total Students</span>
+                        <h2 id="totalStudents">0</h2>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">📚</div>
+
+                    <div>
+                        <span>Courses</span>
+                        <h2 id="totalCourses">0</h2>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-icon green">📈</div>
+
+                    <div>
+                        <span>Average Marks</span>
+                        <h2 id="averageMarks">0</h2>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- Workspace -->
+            <section class="workspace">
+
+
+                <!-- Student Form -->
+                <div class="card form-card">
+
+                    <div class="card-header">
+                        <div>
+                            <h2>Student Details</h2>
+                            <p>Add or modify student information</p>
+                        </div>
+
+                        <div class="card-icon">👤</div>
+                    </div>
+
+
+                    <div class="form">
+
+                        <div class="input-group">
+
+                            <label for="studentId">
+                                Student ID
+                            </label>
+
+                            <input
+                                type="number"
+                                id="studentId"
+                                placeholder="Enter student ID">
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="name">
+                                Student Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                placeholder="Enter student name">
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="course">
+                                Course
+                            </label>
+
+                            <input
+                                type="text"
+                                id="course"
+                                placeholder="e.g. Python">
+
+                        </div>
+
+
+                        <div class="input-group">
+
+                            <label for="marks">
+                                Marks
+                            </label>
+
+                            <input
+                                type="number"
+                                id="marks"
+                                placeholder="Enter marks">
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+                    <div class="actions">
+
+                        <button
+                            class="btn get"
+                            onclick="getStudent()">
+                            🔍 Get
+                        </button>
+
+                        <button
+                            class="btn add"
+                            onclick="addStudent()">
+                            ＋ Add
+                        </button>
+
+                        <button
+                            class="btn update"
+                            onclick="updateStudent()">
+                            ✎ Update
+                        </button>
+
+                        <button
+                            class="btn delete"
+                            onclick="deleteStudent()">
+                            🗑 Delete
+                        </button>
+
+                    </div>
+
+
+                    <div id="message"></div>
+
+                </div>
+
+
+                <!-- Student Table -->
+                <div class="card table-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <h2>Student Records</h2>
+                            <p>All students stored in the database</p>
+                        </div>
+
+                        <div class="record-count">
+                            <span id="recordCount">0</span> Records
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Course</th>
+                                    <th>Marks</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="studentTable">
+
+                                <tr>
+                                    <td colspan="4" class="empty">
+                                        Loading students...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <footer>
+                StudentHub • FastAPI + Supabase
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
